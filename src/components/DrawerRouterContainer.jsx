@@ -62,15 +62,15 @@ class DrawerRouterContainer extends React.Component {
     this.props.history.push(e.itemTarget.props.route);
   };
 
-  getSelectedItem = (pathName) => {
-    let currentPath = items.find((item) => item.route === pathName);
-    if (currentPath.name) {
-      return currentPath.name;
-    }
-  };
+  // getSelectedItem = (pathName) => {
+  //   let currentPath = items.find((item) => item.route === pathName);
+  //   if (currentPath.name) {
+  //     return currentPath.name;
+  //   }
+  // };
   render() {
-    let selected = this.getSelectedItem(this.props.location.pathname);
-    const localizationService = provideLocalizationService(this);
+    // let selected = this.getSelectedItem(this.props.location.pathname);
+    // const localizationService = provideLocalizationService(this);
 
     let locations = [
       {
@@ -187,7 +187,7 @@ class DrawerRouterContainer extends React.Component {
           <div>
             <Header
               onButtonClick={this.handleClick}
-              page={localizationService.toLanguageString(`custom.${selected}`)}
+              // page={localizationService.toLanguageString(`custom.${selected}`)}
             />
             {this.props.children}
           </div>
@@ -197,6 +197,8 @@ class DrawerRouterContainer extends React.Component {
   }
 }
 
-registerForLocalization(DrawerRouterContainer);
+// registerForLocalization(DrawerRouterContainer);
 
-export default withRouter(DrawerRouterContainer);
+// export default withRouter(DrawerRouterContainer);
+
+export default DrawerRouterContainer;

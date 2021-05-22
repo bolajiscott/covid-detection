@@ -27,6 +27,8 @@ export const Chart = (props) => {
         groupColorField, onRefresh
     } = props;
 
+    console.log(groupResourceData)
+
     const intlService = useInternationalization();
     const filteredData = filterBy(data, {
         logic: "and",

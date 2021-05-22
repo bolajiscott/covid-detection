@@ -10,7 +10,7 @@ import { Scheduler } from './../components/Scheduler';
 import { employees } from './../resources/employees';
 import { images } from './../resources/images';
 import { orders, ordersModelFields } from './../resources/orders';
-import { teams } from './../resources/teams';
+import { teams } from '../resources/teams';
 
 const orderEmployees = employees.filter(employee => employee.jobTitle === 'Sales Representative');
 const initialFilterState = { };
@@ -95,7 +95,7 @@ const Planning = () => {
                         modelFields={ordersModelFields}
                         resources={[
                             {
-                                name: 'Teams',
+                                name: 'teams',
                                 data: teams,
                                 field: 'teamID',
                                 valueField: 'teamID',
