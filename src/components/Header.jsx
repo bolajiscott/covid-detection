@@ -1,79 +1,136 @@
+import * as React from "react";
+import * as PropTypes from "prop-types";
 
-import * as React from 'react';
-import * as PropTypes from 'prop-types';
+import { DropDownList } from "@progress/kendo-react-dropdowns";
+import {
+  AppBar,
+  AppBarSection,
+  AppBarSpacer,
+  Avatar,
+} from "@progress/kendo-react-layout";
+import { useLocalization } from "@progress/kendo-react-intl";
 
-import { DropDownList } from '@progress/kendo-react-dropdowns';
-import { Avatar } from '@progress/kendo-react-layout';
-import { useLocalization } from '@progress/kendo-react-intl';
+import { locales } from "./../resources/locales";
 
-import { locales } from './../resources/locales';
+import { AppContext } from "./../AppContext";
 
-import { AppContext } from './../AppContext'
-
-import headerBg from '../assets/header-bg.png';
-import userAvatar from '../assets/user-avatar.jpg';
+import headerBg from "../assets/header-bg.png";
+import userAvatar from "../assets/user-avatar.jpg";
+import { Badge, BadgeContainer } from "@progress/kendo-react-indicators";
 
 export const Header = (props) => {
-    const { onButtonClick, page } = props;
-    const { avatar, localeId, onLanguageChange } = React.useContext(AppContext);
-    const localizationService = useLocalization();
+  const { onButtonClick, page } = props;
+  const { avatar, localeId, onLanguageChange } = React.useContext(AppContext);
+  const localizationService = useLocalization();
 
-    const currentLanguage = locales.find(item => item.localeId === localeId);
+  const currentLanguage = locales.find((item) => item.localeId === localeId);
 
-    const imgRef = React.useRef(null);
-    const hasImage = avatar && avatar.length > 0;
+  const imgRef = React.useRef(null);
+  const hasImage = avatar && avatar.length > 0;
 
-    React.useEffect(
-        () => {
-            if (hasImage) {
-                var reader = new FileReader();
+  React.useEffect(() => {
+    if (hasImage) {
+      var reader = new FileReader();
 
-                reader.onload = function(e) {
-                    imgRef.current.setAttribute('src', e.target.result)
+      reader.onload = function (e) {
+        imgRef.current.setAttribute("src", e.target.result);
+      };
+
+      reader.readAsDataURL(avatar[0].getRawFile());
+    }
+  }, [avatar, hasImage]);
+
+  return (
+    <>
+      <AppBar>
+        <AppBarSection>
+          <button className="k-button k-button-clear">
+            <span className="k-icon k-i-menu" />
+          </button>
+        </AppBarSection>
+
+        <AppBarSpacer
+          style={{
+            width: 4,
+          }}
+        />
+
+        <AppBarSection>
+          <h1 className="title">HealthPal</h1>
+        </AppBarSection>
+
+        <AppBarSpacer
+          style={{
+            width: 32,
+          }}
+        />
+
+        <AppBarSection>
+          <ul>
+            <li>
+              <span>Cases</span>
+            </li>
+            <li>
+              <span>Graphs</span>
+            </li>
+          </ul>
+        </AppBarSection>
+
+        <AppBarSpacer />
+
+        <AppBarSection className="actions">
+          <button className="k-button k-button-clear">
+            <BadgeContainer>
+              <span className="k-icon k-i-bell" />
+              <Badge
+                shape="dot"
+                themeColor="info"
+                size="small"
+                position="inside"
+              />
+            </BadgeContainer>
+          </button>
+        </AppBarSection>
+
+        {/* <AppBarSection>
+          <span className="k-appbar-separator" />
+        </AppBarSection> */}
+      </AppBar>
+      <style>{`
+                body {
+                    background: #dfdfdf;
                 }
+                .title {
+                    font-size: 18px;
+                    margin: 0;
+                }
+                ul {
+                    font-size: 14px;
+                    list-style-type: none;
+                    padding: 0;
+                    margin: 0;
+                    display: flex;
+                }
+                li {
+                    margin: 0 10px;
+                }
+                li:hover {
+                    cursor: pointer;
+                    color: #84cef1;
+                }
+                .k-button {
+                    padding: 0;
+                }
+                .k-badge-container {
+                    margin-right: 8px;
+                }
+            `}</style>
+    </>
+  );
+};
 
-                reader.readAsDataURL(avatar[0].getRawFile());
-            }
-        },
-        [avatar, hasImage]
-    );
-
-    return (
-        <header className="header" style={{ backgroundImage: `url(${headerBg})` }}>
-            <div className="nav-container">
-                <div className="menu-button">
-                    <span className={'k-icon hamburger-icon'} onClick={onButtonClick}/>
-                </div>
-
-                <div className="title">
-                    <h1>{localizationService.toLanguageString('custom.warehouse')}</h1>
-                    <span className="vl"></span>
-                    <h2>{page}</h2>
-                </div>
-                <div className="settings">
-                    <span>{localizationService.toLanguageString('custom.language')}</span>
-                    <DropDownList
-                        textField={'locale'}
-                        dataItemKey={'localeId'}
-                        data={locales}
-                        value={currentLanguage}
-                        onChange={onLanguageChange}
-                    />
-                </div>
-                <Avatar type={'image'} shape={'circle'}>
-                    {
-                        hasImage ?
-                            <img ref={imgRef} src={'#'} alt={'User Avatar'} /> :
-                            <img src={userAvatar} alt="user-avatar"/>
-                    }
-                </Avatar>
-            </div>
-        </header>
-    );
-}
-
-Header.displayName = 'Header';
+Header.displayName = "Header";
 Header.propTypes = {
-    page: PropTypes.string,
-    onButtonClick: PropTypes.func
+  page: PropTypes.string,
+  onButtonClick: PropTypes.func,
 };
