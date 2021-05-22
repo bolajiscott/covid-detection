@@ -37,6 +37,7 @@ import esDateFields from "cldr-dates-full/main/es/dateFields.json";
 import { enMessages } from "./messages/en-US";
 import { frMessages } from "./messages/fr";
 import { esMessages } from "./messages/es";
+import Home from "./pages/Home";
 
 load(
   likelySubtags,
@@ -98,6 +99,7 @@ const App = () => {
                 <Route exact={true} path="/planning" component={Planning} />
                 <Route exact={true} path="/info" component={Info} />
                 <Route path="/covid" component={Dashboard} />
+                <Route exact path="/" component={Home} />
               </Switch>
             </Router>
           </AppContext.Provider>

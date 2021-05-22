@@ -17,7 +17,7 @@ import { AppContext } from "./../AppContext";
 import headerBg from "../assets/header-bg.png";
 import userAvatar from "../assets/user-avatar.jpg";
 import { Badge, BadgeContainer } from "@progress/kendo-react-indicators";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export const Header = (props) => {
   const { onButtonClick, page } = props;
@@ -69,14 +69,26 @@ export const Header = (props) => {
         <AppBarSection>
           <ul>
             <li>
-              <Link to="/covid">
+              <NavLink
+                to="/covid"
+                activeStyle={{
+                  fontWeight: "bold",
+                  color: "#0B1134",
+                }}
+              >
                 <span>Cases</span>
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/covid/graphs">
+              <NavLink
+                to="/covid/graphs"
+                activeStyle={{
+                  fontWeight: "bold",
+                  color: "#0B1134",
+                }}
+              >
                 <span>Graphs</span>
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </AppBarSection>

@@ -19,20 +19,6 @@ const items = [
   { name: "info", icon: "k-i-information", route: "/info" },
 ];
 
-const card = {
-  thumbnailSrc:
-    "https://www.telerik.com/kendo-angular-ui-develop/components/layout/card/assets/rila_lakes.jpg",
-  headerTitle: "bg_mountains",
-  headerSubtitle: "Bulgaria, Europe",
-  commentsExpanded: false,
-  postLiked: false,
-  comments: [],
-  newCommentTextValue: "",
-  postLikes: 962,
-  scrollViewItems: {
-    url: "https://www.telerik.com/kendo-angular-ui-develop/components/layout/card/assets/rila.jpg",
-  },
-};
 class DrawerRouterContainer extends React.Component {
   state = {
     expanded: true,
@@ -114,32 +100,6 @@ class DrawerRouterContainer extends React.Component {
             </div>
 
             <div style={{ padding: "15px" }}>
-              {/* <div style={{ paddingTop: "30px" }}>
-                <DataTree title="Chronic Diseases">
-                  <DataBox title="covid19" active />
-                  <DataBox title="cholera" />
-                </DataTree>
-              </div>
-
-              <div style={{ paddingTop: "30px" }}>
-                <DataTree title="Countries">
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      marginBottom: "10px",
-                    }}
-                  >
-                    <span>Browse</span>
-                    <Button look="outline">Sort</Button>
-                  </div>
-
-
-                  <DataBox title="Nigeria" active />
-                  <DataBox title="Togo" />
-                </DataTree>
-              </div> */}
-
               <div style={{ marginBottom: "10px" }}>
                 <p>Global Insights</p>
                 <GlobalInsight />
