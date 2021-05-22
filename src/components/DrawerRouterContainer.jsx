@@ -109,7 +109,7 @@ class DrawerRouterContainer extends React.Component {
                 cursor: "pointer",
               }}
             >
-              <span>Track chronic diseases</span>
+              <span>Track Covid 19</span>
               <span class="k-icon k-i-arrow-chevron-down"></span>
             </div>
 
@@ -184,7 +184,7 @@ class DrawerRouterContainer extends React.Component {
             </div>
           </div>
 
-          <div>
+          <div style={{ display: "grid", gridTemplateRows: "auto 1fr" }}>
             <Header
               onButtonClick={this.handleClick}
               // page={localizationService.toLanguageString(`custom.${selected}`)}
