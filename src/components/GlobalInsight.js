@@ -1,4 +1,10 @@
-import { Card, CardBody, CardHeader, CardSubtitle, CardTitle } from "@progress/kendo-react-layout";
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  CardSubtitle,
+  CardTitle,
+} from "@progress/kendo-react-layout";
 import React from "react";
 
 export default function GlobalInsight() {
@@ -14,7 +20,7 @@ export default function GlobalInsight() {
         <CardHeader
           className="k-hbox"
           style={{
-            background: "transparent",
+            background: "inherit",
           }}
         >
           <div>
